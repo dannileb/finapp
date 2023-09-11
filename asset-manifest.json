@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/finapp/static/css/main.b8a6af82.css",
+    "main.js": "/finapp/static/js/main.3dcc4d6f.js",
+    "index.html": "/finapp/index.html",
+    "main.b8a6af82.css.map": "/finapp/static/css/main.b8a6af82.css.map",
+    "main.3dcc4d6f.js.map": "/finapp/static/js/main.3dcc4d6f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b8a6af82.css",
+    "static/js/main.3dcc4d6f.js"
+  ]
+}
