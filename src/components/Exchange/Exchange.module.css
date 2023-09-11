@@ -1,0 +1,23 @@
+.Exchange{
+    padding: 4px 8px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    border-radius: 8px;
+    background: var(--PrimaryColor);
+    box-shadow: 0 0 8px 0 var(--PrimaryColor);
+}
+.Type,
+.Value{
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--BackgroundColor);
+}
+.Value_dynamic_negative{
+    color: var(--NegativeGraphColor);
+}
+.Value_dynamic_positive{
+    color: var(--PositiveGraphColor);
+}
