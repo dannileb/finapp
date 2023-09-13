@@ -5,6 +5,18 @@
     padding: 0;
     box-sizing: border-box;
 }
+input{
+    font-family: Jost, sans-serif;;
+}
+input:focus{
+    outline: none;
+}
+button{
+    cursor: pointer;
+
+    background: none;
+    border: none;
+}
 .Container{
     width: 90vw;
 

@@ -1,0 +1,14 @@
+.Input{
+    display: block;
+    padding: 8px;
+    text-align: center;
+
+    font-size: 24px;
+
+    border-radius: 8px;
+    border: none;
+
+    color: var(--PrimaryColor);
+    box-shadow: 0 0 8px 0 var(--PrimaryColor);
+
+}

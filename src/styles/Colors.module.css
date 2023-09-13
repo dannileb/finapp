@@ -1,8 +1,10 @@
 :root{
     --PrimaryColor: #192A56;
     --BackgroundColor: #FFF;
+    --SecondaryColor: #BDC3C7;
 
     --TextColor: #333;
+    --SecondaryBrightColor: #F39C12;
 
     --PositiveGraphColor: #2ECC71;
     --NegativeGraphColor: #E74C3C;

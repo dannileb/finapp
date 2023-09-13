@@ -3,7 +3,6 @@ import classes from './Exchanges.module.css'
 import Exchange from "../Exchange/Exchange";
 import {useFetching} from "../../hooks/useFetching";
 import ExchangesService from "../../API/ExchangesService";
-import {logDOM} from "@testing-library/react";
 
 const Exchanges = () => {
     const [euro, setEuro] = useState('...');
@@ -19,7 +18,7 @@ const Exchanges = () => {
     
     useEffect(()=>{
         fetchExchanges()
-    },[])
+    },[fetchExchanges])
 
     return (
         <div className={classes.Exchanges}>

@@ -1,6 +1,6 @@
 import React from 'react';
-import classes from './Expenses.module.css'
-const Expenses = (props) => {
+import classes from './ExpensesList.module.css'
+const ExpensesList = (props) => {
     return (
         <div className={classes.Expenses}>
             {props.children}
@@ -8,4 +8,4 @@ const Expenses = (props) => {
     );
 };
 
-export default Expenses;
+export default ExpensesList;

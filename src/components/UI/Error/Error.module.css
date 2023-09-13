@@ -1,0 +1,7 @@
+.ErrorText{
+    display: block;
+    padding: 8px 4px;
+
+    font-size: 24px;
+    color: var(--SecondaryBrightColor);
+}
