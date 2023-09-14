@@ -17,7 +17,7 @@ const ExpenseForm = ({create}) => {
 
     const [resetTrigger, setResetTrigger] = useState('')
 
-    const addExpense = (event, setValue) =>{
+    const addExpense = (event) =>{
         event.preventDefault();
         const newExpense = {
             ...expense,
@@ -34,13 +34,16 @@ const ExpenseForm = ({create}) => {
 
     return (
         <form className={classes.ExpenseForm}>
+            <div className={classes.InputsWrapper}>
             <Input
+                classNames={["Input","AddExpenseInput"]}
                 name={"amount"}
                 sendValue={getValue}
                 resetTrigger={resetTrigger}
                 type="number"
                 placeholder={"Сумма"}/>
             <Input
+                classNames={["Input","AddExpenseInput"]}
                 name={"description"}
                 sendValue={getValue}
                 resetTrigger={resetTrigger}
@@ -48,12 +51,14 @@ const ExpenseForm = ({create}) => {
                 placeholder={"Описание"}
                 maxLength={32}/>
             <Input
+                classNames={["Input","AddExpenseInput"]}
                 name={"date"}
                 sendValue={getValue}
                 resetTrigger={resetTrigger}
                 type="date"
-                placeholder={"09.09.23"}/>
-            <Button onClick={addExpense}>
+                placeholder={"Дата"}/>
+            </div>
+            <Button onClick={addExpense} className={"CreateButton"}>
                 <AddIcon/>
             </Button>
         </form>

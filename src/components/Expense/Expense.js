@@ -1,25 +1,33 @@
 import React from 'react';
 import classes from './Expense.module.css';
+import Button from "../UI/Button/Button";
 
-const Expense = ({amount, description, date}) => {
+const Expense = ({expense, remove}) => {
     return (
         <div className={classes.Expense}>
             <span className={
-                amount>0
+                expense.amount>0
                     ?
                     [classes.Amount, classes.Amount_dynamic_positive].join(' ')
                     :
 
                     [classes.Amount, classes.Amount_dynamic_negative].join(' ')
             }>{
-                amount>0
+                expense.amount>0
                     ?
-                    "+"+amount
+                    "+"+expense.amount
                     :
-                    amount
+                    expense.amount
             }</span>
-            <p className={classes.Description}>{description}</p>
-            <time className={classes.Date}>{date}</time>
+
+            <p className={classes.Description}>{expense.description}</p>
+
+            <time className={classes.Date}>{expense.date}</time>
+
+            <Button
+                onClick={() => remove(expense)}
+                className={"RemoveButton"}
+            >Удалить</Button>
         </div>
     );
 };

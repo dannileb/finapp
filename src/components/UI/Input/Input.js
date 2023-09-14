@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import classes from './Input.module.css';
 
-const Input = ({sendValue,resetTrigger, ...props}) => {
+const Input = ({sendValue,resetTrigger, classNames, ...props}) => {
     const [value, setValue] = useState('');
 
     useEffect(() => {
@@ -30,7 +30,11 @@ const Input = ({sendValue,resetTrigger, ...props}) => {
     }
     return (
         <input
-            className={classes.Input}
+            className={
+            classNames.map(
+                className => classes[className]
+            ).join(" ")
+            }
             {...props}
             value={value}
             onChange={changeHandler}

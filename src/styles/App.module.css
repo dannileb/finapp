@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 input{
-    font-family: Jost, sans-serif;;
+    font-family: Jost, sans-serif;
 }
 input:focus{
     outline: none;
@@ -16,6 +16,17 @@ button{
 
     background: none;
     border: none;
+
+    font-family: Jost, sans-serif;
+}
+select{
+    background: none;
+    border: none;
+
+    font-family: Jost, sans-serif;
+}
+select:focus{
+    outline: none;
 }
 .Container{
     width: 90vw;
@@ -38,6 +49,11 @@ button{
     font-family: Jost, sans-serif;
     color: var(--TextColor);
 
+}
+
+.Note{
+    text-align: center;
+    color: var(--SecondaryColor);
 }
 
 @media (min-width: 1024px) {

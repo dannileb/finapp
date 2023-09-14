@@ -3,7 +3,7 @@
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
     gap: 32px;
 
@@ -23,5 +23,7 @@
 .Description,
 .Date{
     font-size: 24px;
-    font-weight: 400;
+}
+.Description{
+    font-weight: 500;
 }

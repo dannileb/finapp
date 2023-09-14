@@ -4,7 +4,7 @@ import Exchange from "../Exchange/Exchange";
 import {useFetching} from "../../hooks/useFetching";
 import ExchangesService from "../../API/ExchangesService";
 
-const Exchanges = () => {
+const Exchanges = (props) => {
     const [euro, setEuro] = useState('...');
     const [dollar, setDollar] = useState('...');
     
@@ -13,6 +13,7 @@ const Exchanges = () => {
 
         setEuro(resp.euroValue);
         setDollar(resp.dollarValue);
+        props.setDate(resp.date);
 
     })
     

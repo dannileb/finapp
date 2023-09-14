@@ -6,24 +6,27 @@ import {useState} from "react";
 import ExpenseForm from "./components/ExpenseForm/ExpenseForm";
 import uuid from "react-uuid";
 import Error from "./components/UI/Error/Error";
+import ExpensesFilterForm from "./components/ExpensesFilterForm/ExpensesFilterForm";
 
 function App() {
     const [expenses, setExpenses] = useState([
-        {id:uuid(), amount: 1200, description:"Подработка", date: "2023-09-09"},
-        {id:uuid(), amount: -200, description:"Покупки", date: "2023-09-09"}
+        {id:uuid(), amount: 1200, description:"Подработка", date: "2023-09-11"},
+        {id:uuid(), amount: -200, description:"Покупки", date: "2023-09-10"},
+        {id:uuid(), amount: 250, description:"Продажа книги", date: "2023-09-09"},
+        {id:uuid(), amount: 450, description:"Ещё что-то", date: "2023-09-09"}
     ])
 
     const [isValid, setIsValid] = useState(true)
+    const [exchangeDate, setExchangeDate] = useState("");
 
-    /*
-            <Expense amount={1200} description={} date={}/>,
-            <Expense amount={-200} description={"Покупка в магазине"} date={"09.09"}/>*/
+    const createExpense = (newExpense) =>{
 
-    function createExpense(newExpense){
         if (
             newExpense.description &&
             newExpense.amount
-        )setExpenses([newExpense, ...expenses, ]);
+        )
+            setExpenses([newExpense, ...expenses, ]);
+
         else{
             setIsValid(false);
             setTimeout(
@@ -32,11 +35,18 @@ function App() {
         }
     }
 
+    const removeExpense = (removeExpense) =>{
+
+        setExpenses(expenses.filter(
+            expense => expense.id !== removeExpense.id
+        ))
+    }
+
 
   return (
     <div className={classes.App}>
         <div className={classes.Container}>
-            <Header/>
+            <Header setDate={setExchangeDate}/>
             {
                 !isValid
                     ?
@@ -45,17 +55,29 @@ function App() {
                     <></>
             }
             <ExpenseForm create={createExpense}/>
-            <ExpensesList>
-                {
-                    expenses.map(expense=>
-                        <Expense
-                            key={expense.id}
-                            amount={expense.amount}
-                            date={expense.date}
-                            description={expense.description}/>
-                    )
-                }
-            </ExpensesList>
+
+           <ExpensesFilterForm expenses={expenses} setExpenses={setExpenses}/>
+
+            {
+                expenses.length
+                    ?
+                    <ExpensesList>
+                        {
+                            expenses.map(expense=>
+                                <Expense
+                                    expense={expense}
+                                    key={expense.id}
+                                    remove={removeExpense}
+                                />
+
+                            )
+                        }
+                    </ExpensesList>
+                    :
+                    <p className={classes.Note}>Пока здесь пусто!</p>
+            }
+
+            <p className={classes.Note}>Значения курсов валют актуальны и предоставлены ExchangeRates API {exchangeDate}</p>
         </div>
     </div>
   );
