@@ -3,9 +3,23 @@
     --BackgroundColor: #FFF;
     --SecondaryColor: #BDC3C7;
 
-    --TextColor: #333;
+    --TextPrimaryColor: #333;
+    --TextSecondaryColor: #FFF;
     --SecondaryBrightColor: #F39C12;
 
     --PositiveGraphColor: #2ECC71;
     --NegativeGraphColor: #E74C3C;
 }
+/*
+:root{
+    --PrimaryColor: #FFF;
+    --BackgroundColor: #192A56;
+    --SecondaryColor: #BDC3C7;
+
+    --TextPrimaryColor: #FFF;
+    --TextSecondaryColor: #333;
+    --SecondaryBrightColor: #F39C12;
+
+    --PositiveGraphColor: #2ECC71;
+    --NegativeGraphColor: #E74C3C;
+}*/

@@ -46,8 +46,10 @@ select:focus{
     flex-direction: column;
     align-items: center;
 
+    background: var(--BackgroundColor);
+
     font-family: Jost, sans-serif;
-    color: var(--TextColor);
+    color: var(--TextPrimaryColor);
 
 }
 

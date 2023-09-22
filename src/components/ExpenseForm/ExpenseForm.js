@@ -36,14 +36,14 @@ const ExpenseForm = ({create}) => {
         <form className={classes.ExpenseForm}>
             <div className={classes.InputsWrapper}>
             <Input
-                classNames={["Input","AddExpenseInput"]}
+                classnames={["AddExpenseInput"]}
                 name={"amount"}
                 sendValue={getValue}
                 resetTrigger={resetTrigger}
                 type="number"
                 placeholder={"Сумма"}/>
             <Input
-                classNames={["Input","AddExpenseInput"]}
+                classnames={["AddExpenseInput"]}
                 name={"description"}
                 sendValue={getValue}
                 resetTrigger={resetTrigger}
@@ -51,7 +51,7 @@ const ExpenseForm = ({create}) => {
                 placeholder={"Описание"}
                 maxLength={32}/>
             <Input
-                classNames={["Input","AddExpenseInput"]}
+                classnames={["AddExpenseInput"]}
                 name={"date"}
                 sendValue={getValue}
                 resetTrigger={resetTrigger}
@@ -59,7 +59,7 @@ const ExpenseForm = ({create}) => {
                 placeholder={"Дата"}/>
             </div>
             <Button onClick={addExpense} className={"CreateButton"}>
-                <AddIcon/>
+                <AddIcon color={"var(--PrimaryColor)"}/>
             </Button>
         </form>
     );

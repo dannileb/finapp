@@ -1,17 +1,16 @@
 .Select{
-    padding: 16px 32px;
-
+    padding: 8px;
     background: var(--PrimaryColor);
     box-shadow: 0 0 8px 0 var(--PrimaryColor);
 
-    color: var(--BackgroundColor);
+    color: var(--TextSecondaryColor);
     font-size: 24px;
 
     border-radius: 8px;;
 }
 .Option{
     background: var(--BackgroundColor);
-    color: var(--PrimaryColor);
+    color: var(--TextPrimaryColor);
 }
 .Option:hover{
     background: var(--SecondaryColor);

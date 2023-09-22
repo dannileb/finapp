@@ -8,10 +8,10 @@
     border-radius: 8px;
     border: none;
 
-    color: var(--PrimaryColor);
+    color: var(--TextPrimaryColor);
     box-shadow: 0 0 8px 0 var(--PrimaryColor);
 
 }
-.AddExpenseInput{
+.AddExpenseInput, .SearchExpenseInput{
     flex: 1;
 }

@@ -1,48 +1,69 @@
 import React, {useState} from 'react';
 import classes from './ExpensesFilterForm.module.css'
 import Select from "../UI/Select/Select";
-const ExpensesFilterForm = ({setExpenses, expenses}) => {
+import Input from "../UI/Input/Input";
+const ExpensesFilterForm = ({setSortedExpenses, expenses}) => {
+    /*TODO: - сделать общий метод который будет принимать изменения sort, filter массива expenses,
+    проводить общую фильтрацию,
+    создавать и изменять массив, а затем отдавать его в List.
+    При этом изначально в List должен отдаваться дефолтно отсортированный массив ОТСЮДА.
+    то есть массив с параметрами sort  и filter = default, и expenses - изначальные*/
+
+    const [sortType, setSortType] = useState('all');
 
 
-    const [sortType, setSortType] = useState('');
+    const sortedExpenses = getSortedExpenses();
 
-    const sortExpenses = (type) =>{
-        setSortType(type)
-        switch (type){
+    function getSortedExpenses(){
+        let sortedExpenses = [];
+
+        switch (sortType){
             case "incomes":
-                setExpenses([...expenses.sort(
+                sortedExpenses = [...expenses.sort(
                     (a,b) => b.amount-a.amount
-                )])
+                )]
                 break;
             case "expenses":
-                setExpenses([...expenses.sort(
+                sortedExpenses = [...expenses.sort(
                     (a,b) => a.amount-b.amount
-                )])
+                )]
 
                 break;
             case "all":
-                setExpenses([...expenses.sort(
+                sortedExpenses = [...expenses.sort(
                     (a,b) => new Date(b.date) - new Date(a.date)
-                )])
+                )]
                 break;
             default:
                 break;
         }
+        setSortedExpenses(sortedExpenses);
+        return sortedExpenses;
+    }
+
+    function getSort(...rest){
+       /* if (rest[0].option){
+
+            setSortType(rest[0].option);
+            sortExpenses(rest[0].option, searchQuery, expenses)
+
+        }else {
+            /!*if (rest.length!==0){
+
+                setSearchQuery(filter);
+                sortExpenses(filter.option, searchQuery, expenses)
+            }*!/
+        }
+*/
+
+    }
+
+    const searchExpenses = (searchQuery, expenses) =>{
+
     }
 
     return (
-        <div className={classes.Form}>
-
-            <Select
-                value={sortType}
-                onChange={sortExpenses}
-                options={[
-                    {value: "all", text: "Всё"},
-                    {value: "incomes", text: "Доходы"},
-                    {value: "expenses", text: "Расходы"}
-                ]}
-            />
-        </div>
+        <></>
     );
 };
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import classes from './Select.module.css'
 const Select = ({options, defaultValue, value, onChange}) => {
+    //While Select changes it returns object with field option,
+    //that describes selected option
     return (
         <select
             className={classes.Select}

@@ -5,10 +5,11 @@
 .RemoveButton{
     padding: 8px;
 
+    background: var(--PrimaryColor);
     border-radius: 8px;
     box-shadow: 0 0 8px 0 var(--PrimaryColor);
 
-    color: var(--PrimaryColor);
+    color: var(--BackgroundColor);
     font-size: 24px;
     font-weight: 300;
 
