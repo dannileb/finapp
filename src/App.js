@@ -1,12 +1,12 @@
 import classes from './styles/App.module.css'
 import Header from "./components/Header/Header";
 import ExpensesList from "./components/ExpensesList/ExpensesList";
-import React, {useState} from "react";
+import React, {useMemo, useState} from "react";
 import ExpenseForm from "./components/ExpenseForm/ExpenseForm";
 import uuid from "react-uuid";
 import Error from "./components/UI/Error/Error";
-import Select from "./components/UI/Select/Select";
-import Input from "./components/UI/Input/Input";
+import ExpensesFilterForm from "./components/ExpensesFilterForm/ExpensesFilterForm";
+
 
 function App() {
     const [expenses, setExpenses] = useState([
@@ -18,11 +18,9 @@ function App() {
 
     const [isValid, setIsValid] = useState(true)
     const [exchangeDate, setExchangeDate] = useState("");
-
     const [sortType, setSortType] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
 
-    const sortedExpenses = getSortedExpenses("all");
 
     const createExpense = (newExpense) =>{
 
@@ -47,45 +45,38 @@ function App() {
         ))
     }
 
-    function getSortedExpenses(){
-        console.log(searchQuery);
-        let filteredExpenses = []
-        searchQuery
-            ?
-            filteredExpenses = [...expenses.filter(expense => expense.date === searchQuery)]
-            :
-            filteredExpenses = [...expenses]
+    const sortedExpenses = useMemo(()=>{
+        console.log("sort");
+        let sortedExpenses = []
 
         switch (sortType){
             case "incomes":
-                filteredExpenses = filteredExpenses.sort(
+                sortedExpenses = [...expenses].sort(
                     (a,b) => b.amount-a.amount
                 )
                 break;
             case "expenses":
-                filteredExpenses = filteredExpenses.sort(
+                sortedExpenses = [...expenses].sort(
                     (a,b) => a.amount-b.amount
                 )
 
                 break;
             case "all":
-                filteredExpenses = filteredExpenses.sort(
+                sortedExpenses = [...expenses].sort(
                     (a,b) => new Date(b.date) - new Date(a.date)
                 )
                 break;
             default:
+                sortedExpenses = [...expenses]
                 break;
         }
-        return filteredExpenses;
-    }
 
-    function sortExpenses(sort){
-        setSortType(sort);
-    }
+        return sortedExpenses;
+    }, [expenses, sortType]);
 
-    function getSearchInputValue(value){
-        setSearchQuery(value);
-    }
+    const resultExpenses =  useMemo(()=>{
+         return  sortedExpenses.filter(expense => expense.description.toLowerCase().includes(searchQuery))
+    }, [searchQuery, sortedExpenses])
 
     return (
     <div className={classes.App}>
@@ -100,32 +91,16 @@ function App() {
             }
             <ExpenseForm create={createExpense}/>
 
-
-            <div className={classes.Form}>
-
-                <Select
-                    value={sortType}
-                    onChange={sortExpenses}
-                    options={[
-                        {value: "all", text: "Всё"},
-                        {value: "incomes", text: "Доходы"},
-                        {value: "expenses", text: "Расходы"}
-                    ]}
-                />
-                <Input
-                    type="date"
-                    sendValue={getSearchInputValue}
-                    name={"descSearchValue"}
-                    resetTrigger={""}
-                    classnames={["SearchExpenseInput"]}
-                    placeholder={"Поиск по дате..."}
-                />
-            </div>
+            <ExpensesFilterForm
+                sortType={sortType}
+                setSortType={setSortType}
+                setSearchQuery={setSearchQuery}
+            />
 
             {
-                sortedExpenses.length
+                resultExpenses.length
                     ?
-                    <ExpensesList expenses={sortedExpenses} removeExpense={removeExpense}/>
+                    <ExpensesList expenses={resultExpenses} removeExpense={removeExpense}/>
                     :
                     <p className={classes.Note}>Пока здесь пусто!</p>
             }

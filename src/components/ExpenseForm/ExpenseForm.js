@@ -8,12 +8,14 @@ const ExpenseForm = ({create}) => {
     const currentDate = new Date();
     const formattedDate = currentDate.toISOString().slice(0, 10);
 
-    const [expense, setExpense] = useState({
+    const defaultExpense = {
         id: "",
         amount: "0",
         description: '',
         date: formattedDate
-    });
+    }
+
+    const [expense, setExpense] = useState(defaultExpense);
 
     const [resetTrigger, setResetTrigger] = useState('')
 
@@ -24,6 +26,8 @@ const ExpenseForm = ({create}) => {
             id: uuid()
         }
         create(newExpense);
+
+        setExpense(defaultExpense)
         setResetTrigger(uuid())
     }
 
