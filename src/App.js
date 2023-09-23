@@ -90,7 +90,7 @@ function App() {
                     <></>
             }
             <ExpenseForm create={createExpense}/>
-
+            <hr/>
             <ExpensesFilterForm
                 sortType={sortType}
                 setSortType={setSortType}

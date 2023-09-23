@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from 'react';
+import React from 'react';
 import classes from './ExpensesFilterForm.module.css'
 import Select from "../UI/Select/Select";
 import Input from "../UI/Input/Input";
@@ -16,7 +16,6 @@ const ExpensesFilterForm = ({sortType, setSortType, setSearchQuery}) => {
     return (
 
         <div className={classes.Form}>
-
             <Select
                 value={sortType}
                 onChange={sortExpenses}
