@@ -4,4 +4,15 @@
 
     font-size: 24px;
     color: var(--SecondaryBrightColor);
+
+    animation: fadeIn 250ms ease-in;
 }
+ @keyframes fadeIn {
+     from {
+         opacity: 0;
+     }
+     to{
+         opacity: 1;
+     }
+
+ }

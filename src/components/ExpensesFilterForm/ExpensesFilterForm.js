@@ -4,6 +4,8 @@ import Select from "../UI/Select/Select";
 import Input from "../UI/Input/Input";
 const ExpensesFilterForm = ({sortType, setSortType, setSearchQuery}) => {
 
+    //TODO: сделать поиск по дате
+
     function sortExpenses(sort){
         setSortType(sort);
     }
@@ -26,13 +28,11 @@ const ExpensesFilterForm = ({sortType, setSortType, setSearchQuery}) => {
                 ]}
             />
             <Input
-                // type="date"
-                // defaulvalue=''
                 sendValue={getSearchInputValue}
                 name={"descSearchValue"}
                 resetTrigger={""}
                 classnames={["SearchExpenseInput"]}
-                placeholder={"Поиск по дате..."}
+                placeholder={"Поиск по описанию..."}
             />
         </div>
     );

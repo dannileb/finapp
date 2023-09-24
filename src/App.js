@@ -6,6 +6,9 @@ import ExpenseForm from "./components/ExpenseForm/ExpenseForm";
 import uuid from "react-uuid";
 import Error from "./components/UI/Error/Error";
 import ExpensesFilterForm from "./components/ExpensesFilterForm/ExpensesFilterForm";
+import "./styles/Animations.css";
+
+//TODO: проработать оптимизацию с помощью useMemo и useCallback
 
 
 function App() {
@@ -75,7 +78,9 @@ function App() {
     }, [expenses, sortType]);
 
     const resultExpenses =  useMemo(()=>{
-         return  sortedExpenses.filter(expense => expense.description.toLowerCase().includes(searchQuery))
+         return  sortedExpenses.filter(
+             expense => expense.description.toLowerCase().includes(searchQuery.toLowerCase())
+         )
     }, [searchQuery, sortedExpenses])
 
     return (
@@ -84,10 +89,8 @@ function App() {
             <Header setDate={setExchangeDate}/>
             {
                 !isValid
-                    ?
-                    <Error errorText={"Все поля должны быть заполнены!"}/>
-                    :
-                    <></>
+                    ? <Error errorText={"Все поля должны быть заполнены!"}/>
+                    : <></>
             }
             <ExpenseForm create={createExpense}/>
             <hr/>
