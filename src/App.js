@@ -1,14 +1,14 @@
 import classes from './styles/App.module.css'
 import Header from "./components/Header/Header";
 import ExpensesList from "./components/ExpensesList/ExpensesList";
-import React, {useMemo, useState} from "react";
+import React, {useCallback, useMemo, useState} from "react";
 import ExpenseForm from "./components/ExpenseForm/ExpenseForm";
 import uuid from "react-uuid";
 import Error from "./components/UI/Error/Error";
 import ExpensesFilterForm from "./components/ExpensesFilterForm/ExpensesFilterForm";
 import "./styles/Animations.css";
 
-//TODO: проработать оптимизацию с помощью useMemo и useCallback
+
 //TODO: зарегать новый акк для API курсов валют
 
 
@@ -24,6 +24,7 @@ function App() {
     const [exchangeDate, setExchangeDate] = useState("");
     const [sortType, setSortType] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
+    const [searchDate, setSearchDate] = useState('');
 
 
     const createExpense = (newExpense) =>{
@@ -78,11 +79,17 @@ function App() {
         return sortedExpenses;
     }, [expenses, sortType]);
 
+    const dateFilteredExpenses = useMemo(()=>{
+        return  sortedExpenses.filter(
+            expense => expense.date.includes(searchDate)
+        )
+    }, [searchDate, sortedExpenses])
+
     const resultExpenses =  useMemo(()=>{
-         return  sortedExpenses.filter(
+         return  dateFilteredExpenses.filter(
              expense => expense.description.toLowerCase().includes(searchQuery.toLowerCase())
          )
-    }, [searchQuery, sortedExpenses])
+    }, [searchQuery, dateFilteredExpenses])
 
     return (
     <div className={classes.App}>
@@ -99,6 +106,7 @@ function App() {
                 sortType={sortType}
                 setSortType={setSortType}
                 setSearchQuery={setSearchQuery}
+                setSearchDate={setSearchDate}
             />
 
             {

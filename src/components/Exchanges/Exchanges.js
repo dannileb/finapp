@@ -5,11 +5,9 @@ import {useFetching} from "../../hooks/useFetching";
 import ExchangesService from "../../API/ExchangesService";
 
 const Exchanges = (props) => {
-    //Exchanges are temporary unavailable because of limit API
-    /*
     const [euro, setEuro] = useState('...');
     const [dollar, setDollar] = useState('...');
-    
+
     const [fetchExchanges, error] = useFetching(async ()=>{
         const resp = await ExchangesService.getExchanges();
 
@@ -18,25 +16,24 @@ const Exchanges = (props) => {
         props.setDate(resp.date);
 
     })
-    
+
     useEffect(()=>{
         fetchExchanges()
     },[fetchExchanges])
-    */
     return (
         <div className={classes.Exchanges}>
             {
-                /*error.length!==0
-                    ?*/
+                error.length!==0
+                    ?
                 <>
                     <Exchange type={"€"} value={"..."} direction={1}/>
                     <Exchange type={"$"} value={"..."} direction={1}/>
                 </>
-                /*    :
+                    :
                 <>
                     <Exchange type={"€"} value={euro} direction={1}/>
                     <Exchange type={"$"} value={dollar} direction={-1}/>
-                </>*/
+                </>
             }
         </div>
     );

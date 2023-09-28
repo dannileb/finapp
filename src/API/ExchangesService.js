@@ -4,7 +4,7 @@ export default class ExchangesService{
 
     // Method gets exchanges rates from free API
     static async getExchanges(){
-        const response = await axios.get('http://api.exchangeratesapi.io/v1/latest?access_key=f013b359cc342fab99879e9d2daaa713&format=1')
+        const response = await axios.get('http://api.exchangeratesapi.io/v1/latest?access_key=2efe4c9f6135d66699272d25f9b8774f&format=1')
 
 
         const euroValue = response.data.rates.RUB;

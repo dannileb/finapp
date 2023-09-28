@@ -10,11 +10,13 @@ const Input = ({sendValue,resetTrigger, ...props}) => {
     //filling date on component loads
     useEffect(() => {
         if (props.type==="date"){
-            if (props.defaultvalue !== undefined){
+            if (props.defaultvalue === undefined){
                 const currentDate = new Date();
                 const formattedDate = currentDate.toISOString().slice(0, 10);
                 sendValue(formattedDate, props.name);
                 setValue(formattedDate);
+            }else {
+                setValue(props.defaultvalue)
             }
         }
     }, []);
@@ -51,10 +53,6 @@ const Input = ({sendValue,resetTrigger, ...props}) => {
             }
             {...props}
             value={
-                props.defaultvalue !== undefined
-                ?
-                props.defaultvalue
-                :
                 value
             }
             onChange={changeHandler}
