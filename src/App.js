@@ -9,6 +9,7 @@ import ExpensesFilterForm from "./components/ExpensesFilterForm/ExpensesFilterFo
 import "./styles/Animations.css";
 
 //TODO: проработать оптимизацию с помощью useMemo и useCallback
+//TODO: зарегать новый акк для API курсов валют
 
 
 function App() {

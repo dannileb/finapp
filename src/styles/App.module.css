@@ -1,4 +1,5 @@
 @import "Colors.module.css";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@200;400;500;700;900&display=swap');
 
 *{
     margin: 0;
@@ -6,7 +7,7 @@
     box-sizing: border-box;
 }
 input{
-    font-family: Jost, sans-serif;
+    font-family: 'Montserrat Alternates', sans-serif;
 }
 input:focus{
     outline: none;
@@ -17,13 +18,13 @@ button{
     background: none;
     border: none;
 
-    font-family: Jost, sans-serif;
+    font-family: 'Montserrat Alternates', sans-serif;
 }
 select{
     background: none;
     border: none;
 
-    font-family: Jost, sans-serif;
+    font-family: 'Montserrat Alternates', sans-serif;
 }
 select:focus{
     outline: none;
@@ -48,7 +49,7 @@ select:focus{
 
     background: var(--BackgroundColor);
 
-    font-family: Jost, sans-serif;
+    font-family: 'Montserrat Alternates', sans-serif;
     color: var(--TextPrimaryColor);
 
 }
